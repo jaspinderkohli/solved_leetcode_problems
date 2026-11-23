@@ -1,31 +1,28 @@
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        '''
-            two strings 
-            s and t
-            check if all of them have same number of chars
-        '''
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
         if len(s) != len(t):
             return False
-            
-        s_d = {}
-        t_d = {}
-        for x in s:
-            if x in s_d:
-                s_d[x] += 1
+        check_s = {}
+        for i in s:
+            if i not in check_s.keys():
+                check_s[i] = 1
             else:
-                s_d[x] = 1
-        for y in t:
-            if y in t_d:
-                t_d[y] += 1
+                check_s[i] += 1
+        print(check_s)
+        
+        check_t = {}
+        for i in t:
+            if i not in check_t.keys():
+                check_t[i] = 1
             else:
-                t_d[y] = 1
-        print(s_d)
-        print(t_d)
-        for k,v in s_d.items():
-            if k not in t_d or t_d[k] != v:
+                check_t[i] += 1
+        print(check_t)
+        for k in check_s.keys():
+            if check_s[k] != check_t.get(k, 0):
                 return False
         return True
-                
-            
-
